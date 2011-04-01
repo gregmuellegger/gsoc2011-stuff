@@ -436,5 +436,5 @@ working on a patch [3].
 
 
 [1] http://groups.google.com/group/django-developers/browse_thread/thread/cbb3aee22a0f8918
-[2]
+[2] https://gist.github.com/898375
 [3] https://github.com/brutasse/django/compare/15667-template-widgets
