@@ -369,39 +369,40 @@ That's it so far with the proposal. In the following I will go a bit into the
 timeline that I have in mind for the implementation.
 
 1st week: Examing what unittests are available for the current form rendering
-          and making sure they are stable for testing backwards compatibility
-          during the project.
-2. Converting the current layouts into template based renderers, ensuring
-   backwards compatibility.
+and making sure they are stable for testing backwards compatibility
+during the project.
+
+2nd week: Converting the current layouts into template based renderers, ensuring
+backwards compatibility.
 
 Goal: no HTML should be left now in the python source.
 
-3. I will attend DjangoCon EU
+3rd week: I will attend DjangoCon EU
 
-4. Starting to write tests and implementing the {% form %} tag to be able to
-   emulate all the rendering that is currently possible.
+4th week: Starting to write tests and implementing the {% form %} tag to be able to
+emulate all the rendering that is currently possible.
 
-5. Implementing the necessary rendering modifiers like "fields" (limiting the
-   form to some selected fields) and the API for chrome.
+5th week: Implementing the necessary rendering modifiers like "fields" (limiting the
+form to some selected fields) and the API for chrome.
 
-6. Building the registry that is necessary to register your own rendering
-   modifiers and chrome.
+6th week: Building the registry that is necessary to register your own rendering
+modifiers and chrome.
 
-7. Taking care of the media handling.
+7th week: Taking care of the media handling.
 
 Goal: Project should be feature complete.
 
-8. Converting the admin to use the new form rendering and providing hooks for
-   applying chrome to some fields.
+8th week: Converting the admin to use the new form rendering and providing hooks for
+applying chrome to some fields.
 
-9. Integrating lessons learned from the admin especially in the sense of
-   making it easy to package chrome with a reusable app.
+9th week: Integrating lessons learned from the admin especially in the sense of
+making it easy to package chrome with a reusable app.
 
 Goal: Code should be ready to be used in sample projects
 
-10 & 11. Documentation and bugfixes
+10th & 11th week: Documentation and bugfixes
 
-12. Finalizing
+12th week: Finalizing
 
 Unfortunatelly university is running in germany during the time that I will
 work on the project. However based on my experience with last years of
@@ -435,6 +436,6 @@ But Bruno has already made a great effort with developing
 working on a patch [3].
 
 
-[1] http://groups.google.com/group/django-developers/browse_thread/thread/cbb3aee22a0f8918
-[2] https://gist.github.com/898375
-[3] https://github.com/brutasse/django/compare/15667-template-widgets
+* [1] http://groups.google.com/group/django-developers/browse_thread/thread/cbb3aee22a0f8918
+* [2] https://gist.github.com/898375
+* [3] https://github.com/brutasse/django/compare/15667-template-widgets
