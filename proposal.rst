@@ -337,7 +337,7 @@ example template would look like::
         {% form myform configure widget "CalendarInput" for myform.birthday %}
                        ^--- The new widget for the field birthday will be
                             recorded, but the form will not be rendered.
-        {{ form.media.css }}
+        {{ myform.media.css }}
            ^--- Outputting all necessary css files.
     {% endblock %}
 
@@ -348,7 +348,7 @@ example template would look like::
     {% endblock %}
 
     {% block footer %}
-        {{ form.media.js }}
+        {{ myform.media.js }}
            ^--- Outputting all necessary js files at the end of the document.
     {% endblock %}
 
@@ -396,8 +396,8 @@ based on discussions from DjangoCon EU.
 
 Goal: All public APIs should be stable.
 
-6th week: Starting to write tests and implementing the {% form %} tag to be able to
-emulate all the rendering that is currently possible.
+6th week: Starting to write tests and implementing the ``{% form %}`` tag to
+be able to emulate all the rendering that is currently possible.
 
 7th week: Implementing the necessary rendering modifiers like "fields",
 "layout" etc. and the API for chrome.
@@ -411,10 +411,10 @@ Goal: Project should be feature complete.
 implementation with thirdparty modules (see Media section).
 * Converting the admin to use the new form rendering.
 * Integrating lessons learned from the admin.
-* Bugfixes and regression tests for problems that occur when working with the
-admin.
+* Bugfixes and regression tests for problems that showed up in the work with
+the admin.
 
-Goal: Code should be ready to be used in sample projects
+Goal: Code should be ready to be used in sample projects.
 
 12th week: Finalizing, bugfixes and tweaking the documentation.
 
