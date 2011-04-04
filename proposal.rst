@@ -337,7 +337,7 @@ example template would look like::
         {% form myform configure widget "CalendarInput" for myform.birthday %}
                        ^--- The new widget for the field birthday will be
                             recorded, but the form will not be rendered.
-        {% formmedia css for myform %}
+        {{ form.media.css }}
            ^--- Outputting all necessary css files.
     {% endblock %}
 
@@ -347,20 +347,28 @@ example template would look like::
                 "CalendarInput" widget that was specified in the other tag.
     {% endblock %}
 
-    {% block extrajs %}
-        {% formmedia js for myform %}
+    {% block footer %}
+        {{ form.media.js }}
            ^--- Outputting all necessary js files at the end of the document.
     {% endblock %}
 
-A shortform for the ``{% formmedia %}`` tag is available if one likes to load
-the css and javascript next to each other: ``{% formmedia for myform %}``
+I will also check the possibility and difficulty of a new ``{% formmedia %}``
+tag that hooks into the template parsing system, reading until the end of the
+template and analyzing the use of the ``{% form %}`` tag. This way it could
+determine all changes that will be applied to the form before it gets
+rendered, including all the necessary CSS dependencies that needs to be
+imported in the header of the page.
 
-I don't know if backwards compatibility is also necessary here. If you use the
-new ``{% form %}`` tag you will also need to update your ``{{ form.media }}``
-statements.
-However we could still provide backwards compatibility by overwriting the
-``media`` attribute of the form instance that we have modified with the
-``{% form ... configure .. %}`` tag.
+It is not clarified yet, if the ``{% formmedia %}`` is possible at all with
+the current template parsing implementation. There might be some risks that
+need to be sorted out before starting with the implementation:
+
+* By parsing from the ``{% formmedia %}`` tag until the end of the template
+might result in that all content after this tag is represented as a child node
+of it. What side effects are implied? Does it produce backwards
+incompatibilities with thirdparty template tags?
+* What happens if the ``{% form %}`` tag is changing the widget of the form
+based on a context variable?
 
 Estimates
 ---------
