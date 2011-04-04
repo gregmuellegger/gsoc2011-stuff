@@ -376,41 +376,47 @@ Estimates
 That's it so far with the proposal. In the following I will go a bit into the
 timeline that I have in mind for the implementation.
 
-1st week: Examing what unittests are available for the current form rendering
-and making sure they are stable for testing backwards compatibility
-during the project.
+1st week: Starting to layout the documentation. The form tag syntax based on
+discussions from the mailing list should already be finalized.
 
-2nd week: Converting the current layouts into template based renderers, ensuring
+2nd week: Examing what unittests are available for the current form rendering
+and making sure they are stable for testing backwards compatibility during the
+project.
+
+3rd week: I will attend DjangoCon EU, hopefully giving a talk about the
+revised form rendering and collecting more feedback in an open space.
+
+4th week: Converting the current layouts into template based renderers, ensuring
 backwards compatibility.
 
 Goal: no HTML should be left now in the python source.
 
-3rd week: I will attend DjangoCon EU
+5th week: Mainly working on documentation and integrating the very last changes
+based on discussions from DjangoCon EU.
 
-4th week: Starting to write tests and implementing the {% form %} tag to be able to
+Goal: All public APIs should be stable.
+
+6th week: Starting to write tests and implementing the {% form %} tag to be able to
 emulate all the rendering that is currently possible.
 
-5th week: Implementing the necessary rendering modifiers like "fields" (limiting the
-form to some selected fields) and the API for chrome.
+7th week: Implementing the necessary rendering modifiers like "fields",
+"layout" etc. and the API for chrome.
 
-6th week: Building the registry that is necessary to register your own rendering
-modifiers and chrome.
-
-7th week: Taking care of the media handling.
+8th week: Implementing the ``{% formmedia %}`` tag.
 
 Goal: Project should be feature complete.
 
-8th week: Converting the admin to use the new form rendering and providing hooks for
-applying chrome to some fields.
-
-9th week: Integrating lessons learned from the admin especially in the sense of
-making it easy to package chrome with a reusable app.
+9th - 11th week:
+* Validating backwards compatibility for the ``{% formmedia %}`` parsing
+implementation with thirdparty modules (see Media section).
+* Converting the admin to use the new form rendering.
+* Integrating lessons learned from the admin.
+* Bugfixes and regression tests for problems that occur when working with the
+admin.
 
 Goal: Code should be ready to be used in sample projects
 
-10th & 11th week: Documentation and bugfixes
-
-12th week: Finalizing
+12th week: Finalizing, bugfixes and tweaking the documentation.
 
 Unfortunatelly university is running in germany during the time that I will
 work on the project. However based on my experience with last years of
