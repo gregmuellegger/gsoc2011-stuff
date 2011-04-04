@@ -364,11 +364,12 @@ the current template parsing implementation. There might be some risks that
 need to be sorted out before starting with the implementation:
 
 * By parsing from the ``{% formmedia %}`` tag until the end of the template
-might result in that all content after this tag is represented as a child node
-of it. What side effects are implied? Does it produce backwards
-incompatibilities with thirdparty template tags?
+  might result in that all content after this tag is represented as a child
+  node of it. What side effects are implied? Does it produce backwards
+  incompatibilities with thirdparty template tags?
+
 * What happens if the ``{% form %}`` tag is changing the widget of the form
-based on a context variable?
+  based on a context variable?
 
 Estimates
 ---------
@@ -407,12 +408,13 @@ be able to emulate all the rendering that is currently possible.
 Goal: Project should be feature complete.
 
 9th - 11th week:
+
 * Validating backwards compatibility for the ``{% formmedia %}`` parsing
-implementation with thirdparty modules (see Media section).
+  implementation with thirdparty modules (see Media section).
 * Converting the admin to use the new form rendering.
 * Integrating lessons learned from the admin.
 * Bugfixes and regression tests for problems that showed up in the work with
-the admin.
+  the admin.
 
 Goal: Code should be ready to be used in sample projects.
 
