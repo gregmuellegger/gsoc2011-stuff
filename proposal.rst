@@ -324,16 +324,27 @@ Media aka. JS/CSS
 One of the other mainpoints in the discussions I reviewed for this proposal was
 the use of JS and CSS files that must be maintained somehow to display them
 how we already do through the media framework (e.g. ``{{ form.media }}``).
-
 The problem with this is that with the new template tag we can change some
-of the widgets in the template and introducing new dependencies. Thats why I
-would like to have an alternative for the ``using`` argument in the
-``{% form %}`` tag.
+of the widgets in the template, introducing new dependencies.
 
-If ``using`` is replaced with ``configure``, the ``{% form %}`` tag will _not_
-output the HTML in the current place. However it will record and remember the
-usage of widgets and fields to determine which media files are required. An
-example template would look like::
+The main part of my work on this problem will be some investigation if it is
+possible to create a ``{% media %}`` tag that parses the template to determine
+the changes that will be applied to the form. This way it is possible to
+include all CSS dependecies in the head of the page without sacrificing the
+possibility to change the form rendering in the template.
+
+After providing a proof of concept, it will be necessary to test backwards
+compatibility with other form tags and libraries.
+
+But there is some alternative if I find out, that the described approach is
+technically not possible or would result in an ugly hack of the template
+parsing.
+
+The solution will be an alternative for the ``using`` argument in the ``{%
+form %}`` tag. If ``using`` is replaced with ``configure``, the ``{% form %}``
+tag will _not_ output the HTML in the current place. However it will record
+and remember the usage of widgets and fields to determine which media files
+are required. An example template would look like::
 
     {% block extrahead %}
         {% form myform configure widget "CalendarInput" for myform.birthday %}
