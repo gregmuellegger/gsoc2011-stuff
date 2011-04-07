@@ -318,6 +318,23 @@ etc. into chrome implementations.
 
 Lots of work but nothing to specify here...
 
+Formsets
+--------
+
+A formset is usually a list of forms and logic to deal with them at once.
+There is no special support described yet in this proposal. But it will be
+made sure that formsets can be used just as any other forms. You will only
+need to iterate over the contained forms first::
+
+    {% for myform in myformset.forms %}
+        {% form myform %}
+    {% endfor %}
+    {{ myformset.management_form %}
+
+If a better way of dealing with formsets will come up in discussions then I'm
+happy to include this in my work for the summer. However it will be not my
+primary focus and not a goal for measuring the success of the project.
+
 Media aka. JS/CSS
 -----------------
 
