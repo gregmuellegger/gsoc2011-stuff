@@ -7,7 +7,7 @@ came to django shortly before 0.96 was released and a lots of awesomeness was
 introduced with the magic removal branch.
 
 I'm also doing some django freelancing work since 2008 to finance my studies
-and attended DjangoCon EU in 2011. This year I would like to apply to
+and attended DjangoCon EU in 2010. This year I would like to apply to
 Google Summer of Code helping to improve Django with something that bugs me
 since quite a while: It's builtin ability to render a form straight away into
 HTML.
@@ -78,19 +78,19 @@ want to achieve during the summer:
    eating its own dogfood. Second, to prove that the stuff I have developed is
    really a step forward and to show up big problems that occur in reallife
    scenarios, not taken into account in the blueprint.
-7. Documenting all the newly introduced templatetags, the builtin chromes,
-   how to write custom chrome, how to create your own form layout etc...
+7. Documenting all the newly introduced templatetags, how to extend the
+   rendering behaviour, how to create your own form layout ...
 
-Let's get a bit more detailed. How do I want to implement these goals?
+Let's get a bit more detailed. How will this look like?
 
 **1. No HTML in python source**
 
 I will push the formating of ``as_table``, ``as_ul`` and ``as_p`` into a
 specified template structure. A formating (e.g. ``ul``) will be called a
 layout and will live in the template directory ``forms/layouts/<layout>/...``.
-This directory will contain a single file (e.g. for the table layout)::
+This directory will contain a single file::
 
-    forms/layouts/table/row.html
+    forms/layouts/<layout name>/row.html
 
 Creating a new layout is as simple as putting a new directory into your
 template path and adding one file. Why putting the file into a directory? The
@@ -103,8 +103,10 @@ Ok, but how will this look in the template where I use the form? For this we
 need a new template tag::
 
     {% form myform using layout "p" %}
-               -- or --
+
     {% form myform using layout "my_custom_layout" %}
+
+    ...
 
 **2. Reordering/skipping fields**
 
