@@ -488,9 +488,16 @@ template based widgets is and much more.
 My first thought was to include template based widgets also in this proposal.
 But Bruno has already made a great effort with developing
 **django-floppyforms** that might also get merged into django. He is already
-working on a patch [3].
+working on a patch [3]. The use of template based widgets might also
+invalidate the idea of a chrome. I cannot forsee the final widget
+implementation, but this proposal might change to drop chrome in favour of
+better support of exchanging widgets on the fly and configuring them directly
+in the template.
 
+Links
+-----
 
 * [1] http://groups.google.com/group/django-developers/browse_thread/thread/cbb3aee22a0f8918
 * [2] https://gist.github.com/898375
 * [3] https://github.com/brutasse/django/compare/15667-template-widgets
+* [4] http://groups.google.com/group/django-developers/browse_thread/thread/8eb1f07bfd949ab7
