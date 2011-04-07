@@ -365,24 +365,50 @@ are required. An example template would look like::
            ^--- Outputting all necessary js files at the end of the document.
     {% endblock %}
 
-I will also check the possibility and difficulty of a new ``{% formmedia %}``
-tag that hooks into the template parsing system, reading until the end of the
-template and analyzing the use of the ``{% form %}`` tag. This way it could
-determine all changes that will be applied to the form before it gets
-rendered, including all the necessary CSS dependencies that needs to be
-imported in the header of the page.
+Alternative Syntax
+------------------
 
-It is not clarified yet, if the ``{% formmedia %}`` is possible at all with
-the current template parsing implementation. There might be some risks that
-need to be sorted out before starting with the implementation:
+There is a vital discussion on the mailing list about the drafts of this
+proposal [4]. There came up some new ideas about an alternative syntax,
+avoiding the long lines that would be necessary with the proposed sytanx
+above. Here are some examples how this would look like::
 
-* By parsing from the ``{% formmedia %}`` tag until the end of the template
-  might result in that all content after this tag is represented as a child
-  node of it. What side effects are implied? Does it produce backwards
-  incompatibilities with thirdparty template tags?
+    {% form myform %}
+       ^--- Rendering the given form with the default layout.
 
-* What happens if the ``{% form %}`` tag is changing the widget of the form
-  based on a context variable?
+    {% form myform using %}
+       ^--- The form tag pushes a new layer on the context stack. Every
+            configuration inbetween this block tag will only affect rendered
+            forms inside of this tag.
+
+        {% layout "uni_form" %}
+           ^--- The proposed rendering modifiers are implemented as concrete
+                template tags, making them {% load %}-able.
+
+        {% field myform.firstname %}
+        {% field myform.lastname %}
+           ^--- Fields can be directly rendered via the field tag. The
+                rendering uses the options provided earlier e.g. in the layout
+                tag.
+
+    {% endform %}
+
+However I want to note explicitly that all the syntaxes mentioned in this
+proposal are not stable yet and I won't pretend on using them if other
+solutions are more reasonable to use. I'm sure there will be an ongoing
+discussion on the django-developers mailing list that will yield the final
+details for this project.
+
+After submitting this proposal and before starting to code, I will test the
+use of multiple syntaxes in some pathological scenarios. It should provide
+evidence whether one syntax is superior. Some of these test cases might be:
+
+* Simply rendering a form with the default layout.
+* Changing the default layout (like the current ``{{ myform.as_ul }}``).
+* Rendering a form with ten fields but skipping the last one.
+* Rendering a form with only hidden widgets.
+* Using three forms on the same page.
+* Using a formset.
 
 Estimates
 ---------
