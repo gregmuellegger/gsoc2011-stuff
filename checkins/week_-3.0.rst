@@ -11,8 +11,7 @@ studies.
 My project will basically try to make the current form rendering possibilities
 more flexible and to remove all the hardcoded HTML from the django source
 related to forms. You can have a look at the django-dev mailing list
-discussion about my proposal online:
-http://groups.google.com/group/django-developers/browse_thread/thread/8eb1f07bfd949ab7
+discussion about my proposal online [1].
 
 My mentor is Carl Meyer, I already spoke to him and I'm very sure that we will
 make a great team in bringing this project to a successful ending in August.
@@ -40,23 +39,24 @@ Here are some resources you might want to track during the summer if you are
 interested in this GSoC project:
 
 * My django fork on github will have a soc2011/form-rendering branch that will
-contain my updates that might get merged into django's trunk at the end of
-summer [1]. My changes compared to django's trunk will be visible there as
-well [2].
+  contain my updates that might get merged into django's trunk at the end of
+  summer [2]. My changes compared to django's trunk will be visible there as
+  well [3].
 
 * Keep track of the django-form-rendering-api repository if you want to know
-how things go in the design process. [3] There's nothing in there yet, but
-this will change during the next week.
+  how things go in the design process. [4] There's nothing in there yet, but
+  this will change during the next week.
 
 * Join us in #django-dev on Freenode! Carl and I will use this as our IM
-solution so that you can jump into the discussion if you are interested.
-
-[1] https://github.com/gregmuellegger/django/tree/soc2011%2Fform-rendering
-[2] https://github.com/gregmuellegger/django/compare/django:master...gregmuellegger:soc2011/form-rendering
-[3] https://github.com/gregmuellegger/django-form-rendering-api
+  solution so that you can jump into the discussion if you are interested.
 
 That's it so far this week. Thanks for your attention :-)
 
+
+| [1] http://groups.google.com/group/django-developers/browse_thread/thread/8eb1f07bfd949ab7
+| [2] https://github.com/gregmuellegger/django/tree/soc2011%2Fform-rendering
+| [3] https://github.com/gregmuellegger/django/compare/django:master...gregmuellegger:soc2011/form-rendering
+| [4] https://github.com/gregmuellegger/django-form-rendering-api
 
 --
 Servus,
