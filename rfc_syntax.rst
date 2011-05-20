@@ -9,7 +9,7 @@ rendering. The first approach is called "single_tag" [2] the second one
 style of the "modifier_tags" syntax.
 
 I tried here to summerize a bit how the new tags will look like. I call now
-comments and will really appreciate any feedback on them. Beeing it about
+for comments and will really appreciate any feedback on them. Beeing it about
 their naming or if you have ideas for other tags. Be picky, this is something
 lots of people will use -- and though we want it to be as easy as possible to
 get started with.
@@ -101,6 +101,16 @@ least either the widget class or template.
 The "with varname=varvalue" bit in the widget tag is meant as possibility to
 pass extra arguments into the template that will be used to render the widget.
 This will use the same syntax as django's ``include`` tag [5].
+
+
+At the end a short word to the meanings of widgets.Textarea for example. This
+will basically be a template variable referencing the Textarea widget. So we
+don't use special syntax for this in the tag, we just pull out the "widgets"
+template variable that will be passed in via an context processor.
+
+The "widgets" and "formfields" variables will be modifiable by users, so that
+they can register their own widgets in their reusable apps, then usable in all
+templates.
 
 
 
