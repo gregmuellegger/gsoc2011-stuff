@@ -129,6 +129,6 @@ Gregor
 | [1] https://github.com/gregmuellegger/django-form-rendering-api
 | [2] https://github.com/gregmuellegger/django-form-rendering-api/blob/master/formapi/templates/api_samples/single_tag.html
 | [3] https://github.com/gregmuellegger/django-form-rendering-api/blob/master/formapi/templates/api_samples/modifier_tags.html
-| [3] https://github.com/gregmuellegger/django-form-rendering-api/blob/master/formapi/templates/api_samples/hybrid.html
+| [4] https://github.com/gregmuellegger/django-form-rendering-api/blob/master/formapi/templates/api_samples/hybrid.html
 | [5] http://code.djangoproject.com/ticket/15667
 | [6] http://docs.djangoproject.com/en/dev/ref/templates/builtins/#std:templatetag-include
