@@ -5,11 +5,11 @@ Hi,
 like you might know I've prepared as pre-work to my GSoC project a repository
 [1] with examples for two different approaches to my upcoming work on the form
 rendering. The first approach is called "single_tag" [2] the second one
-"modifier_tags" [3]. I agreed with my mentor Carl that we will follow more the
-style of the "modifier_tags" syntax.
+"modifier_tags" [3]. I agreed with my mentor Carl that we will follow a
+"hybrid" style of both proposals [4].
 
-I tried here to summerize a bit how the new tags will look like. I call now
-for comments and will really appreciate any feedback on them. Beeing it about
+I tried here to summarize a bit how the new tags will look like. I call now
+for comments and will really appreciate any feedback on them. Being it about
 their naming or if you have ideas for other tags. Be picky, this is something
 lots of people will use -- and though we want it to be as easy as possible to
 get started with.
@@ -18,7 +18,11 @@ get started with.
 
     {% renderform <form instance> [<field name> ...] [hidden <field name> ...] [exclude <field name> ...] %}
 
-The renderform tag renders the complete form. You can influence which fields will be used, sparing some fields out if you want that. Examples::
+The renderform tag renders the complete form::
+
+    {% renderform my_form %}
+
+You can influence which fields will be used, sparing some fields out if you want that. Examples::
 
     {% renderform my_form "username" "password" %}
 
@@ -58,13 +62,13 @@ rendering outside of the form tag. ::
 
 The description of the form tag implies that the modifier tags are able to
 set/modify the global state in the current template. That is something that is
-clearly wanted. This way you can set a "formlayout" in the head of your base
-template and any other extending template will have this default for the form
-rendering.
+explicitly wanted. This way you can set a "formlayout" in the head of your
+base template and any other extending template will have this default for the
+form rendering.
 
 Another tag to modify the rendering is the widget tag::
 
-    {% widget (<widget class or instance>|using <template name>) for <field type> [with <varname>=<varvalue> ...] %}
+    {% widget [<widget class or instance>] [using <template name>] for <field type> [with <varname>=<varvalue> ...] %}
 
 In this syntax description <field type> means that you can specify one of
 three things as argument:
@@ -78,7 +82,7 @@ three things as argument:
    will render a <input type="password" /> for all charfields.
 
 3. A field name (string). This will apply to all fields that have that
-   particular field name. It's only usefull if the option should apply to more
+   particular field name. It's only useful if the option should apply to more
    than one form or as convenience for short reference of a field.
 
 Some examples::
@@ -90,28 +94,32 @@ Some examples::
 You can also change the template that will be used to render the widget with
 the using keyword (we assume at this point that until this GSoC project is
 finished we will likely have template based widget rendering like currently
-developed by Bruno [4]), an example::
+developed by Bruno [5]), an example::
 
     {% widget using "my_textarea_widget.html" for my_form.comment %}
 
 It's actually possible to specify a special template for the widget *and* to
-change the widget class itself with the tag. However you need to specify at
-least either the widget class or template.
+change the widget class itself with the tag::
+
+    {% widget widgets.DatePicker using "widgets/alternative_datepicker.html" for my_form.birthday %}
 
 The "with varname=varvalue" bit in the widget tag is meant as possibility to
 pass extra arguments into the template that will be used to render the widget.
-This will use the same syntax as django's ``include`` tag [5].
+This will use the same syntax as django's ``include`` tag [6]::
+
+    {% widget for my_form.text with rows=10 cols=20 %}
+
+    {% widget using "widgets/tinymce.html" for my_form.comment with theme="advanced" %}
 
 
-At the end a short word to the meanings of widgets.Textarea for example. This
+At the end a short word to the meanings of widgets.Textarea etc. This
 will basically be a template variable referencing the Textarea widget. So we
 don't use special syntax for this in the tag, we just pull out the "widgets"
-template variable that will be passed in via an context processor.
+template variable that will be passed in via a context processor.
 
 The "widgets" and "formfields" variables will be modifiable by users, so that
 they can register their own widgets in their reusable apps, then usable in all
 templates.
-
 
 
 Thanks if you have read so far. Now please start commenting :-)
@@ -121,5 +129,6 @@ Gregor
 | [1] https://github.com/gregmuellegger/django-form-rendering-api
 | [2] https://github.com/gregmuellegger/django-form-rendering-api/blob/master/formapi/templates/api_samples/single_tag.html
 | [3] https://github.com/gregmuellegger/django-form-rendering-api/blob/master/formapi/templates/api_samples/modifier_tags.html
-| [4] http://code.djangoproject.com/ticket/15667
-| [5] http://docs.djangoproject.com/en/dev/ref/templates/builtins/#std:templatetag-include
+| [3] https://github.com/gregmuellegger/django-form-rendering-api/blob/master/formapi/templates/api_samples/hybrid.html
+| [5] http://code.djangoproject.com/ticket/15667
+| [6] http://docs.djangoproject.com/en/dev/ref/templates/builtins/#std:templatetag-include
