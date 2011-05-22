@@ -433,18 +433,18 @@ Estimates
 That's it so far with the proposal. In the following I will go a bit into the
 timeline that I have in mind for the implementation.
 
-1st week: Starting to layout the documentation. The form tag syntax based on
-discussions from the mailing list should already be finalized.
-
-2nd week: Examing what unittests are available for the current form rendering
+1st week: Examing what unittests are available for the current form rendering
 and making sure they are stable for testing backwards compatibility during the
 project.
 
-3rd week: I will attend DjangoCon EU, hopefully giving a talk about the
+2nd week: Converting the current layouts into template based renderers,
+ensuring backwards compatibility.
+
+3rd week: I will attend DjangoCon EU, giving a lightning talk about the
 revised form rendering and collecting more feedback in an open space.
 
-4th week: Converting the current layouts into template based renderers, ensuring
-backwards compatibility.
+4th week: Starting to layout the documentation. The form tag syntax based on
+discussions from the mailing list should already be finalized.
 
 Goal: no HTML should be left now in the python source.
 
